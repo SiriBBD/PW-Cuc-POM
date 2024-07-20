@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.8.0",
+    "dotenv": "^16.4.5",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.45.2",
+    "playwright": "^1.45.2"
+  },
+  "name": "pw-cuc-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

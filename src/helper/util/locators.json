@@ -1,0 +1,6 @@
+{
+    "usernameInput": "#login-username",
+    "passwordInput": "#login-password",
+    "loginButton": "button:nth-child(5)"
+  }
+  
