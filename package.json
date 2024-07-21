@@ -18,7 +18,7 @@
   "scripts": {
     "pretest": "npx ts-node src/helper/report/init.ts",
     "test": "cross-env ENV=prod cucumber-js test || true",
-    "posttest": "npx ts-node src/helper/report/report.ts",
+    "report": "npx ts-node src/helper/report/report.ts",
     "test:failed": "cucumber-js @rerun.txt"
   },
   "keywords": [],

@@ -37,4 +37,5 @@ npm i winston -D
 # To Run Command:
 
   npm run test / npm test
+  npm run report
  
