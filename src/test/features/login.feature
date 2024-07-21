@@ -11,6 +11,8 @@ Feature: User Authentication tests
     Then Login should be success
 
 Examples:
-      | username | password | 
+      | username | password   | 
       | Taylor   | @Password1 |
+      
+     
      

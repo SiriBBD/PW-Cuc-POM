@@ -1,8 +1,12 @@
 {
   "devDependencies": {
     "@cucumber/cucumber": "^10.8.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
-    "ts-node": "^10.9.2"
+    "fs-extra": "^11.2.0",
+    "multiple-cucumber-html-reporter": "^3.7.0",
+    "ts-node": "^10.9.2",
+    "winston": "^3.13.1"
   },
   "dependencies": {
     "@playwright/test": "^1.45.2",
@@ -12,7 +16,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js test"
+    "pretest": "npx ts-node src/helper/report/init.ts",
+    "test": "cross-env ENV=prod cucumber-js test || true",
+    "posttest": "npx ts-node src/helper/report/report.ts",
+    "test:failed": "cucumber-js @rerun.txt"
   },
   "keywords": [],
   "author": "",
