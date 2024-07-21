@@ -29,7 +29,9 @@ loginPage = new LoginPage(fixture.page);
 
          Then('Login should be success', async function () {
           const heading = fixture.page.locator("#spnPageHeaderTitle");
-          await expect(heading).toBeVisible();          
+          await expect(heading).toBeVisible();  
+          await fixture.page.waitForTimeout(2000);
+          await loginPage.logoutUser();                                      
          });
 
       
