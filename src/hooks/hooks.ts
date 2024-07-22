@@ -1,12 +1,13 @@
 import { Before, After, BeforeAll, AfterAll, Status } from "@cucumber/cucumber";
-import { Browser, Page, BrowserContext, chromium } from "@playwright/test";
+import { Browser, Page, BrowserContext, Video } from "@playwright/test";
 import { fixture } from "./pageFixture";
 import { invokeBrowser } from "../helper/browsers/browserManager";
 import { getEnv } from "../helper/env/env";
 import { createLogger } from "winston";
 import {options} from "../helper/util/logger";
+const fs = require("fs-extra");
 
-
+let page:Page;
 let browser:Browser;
 let context:BrowserContext;
 
@@ -22,26 +23,36 @@ Before(async function({pickle}){
         dir:"test-results/videos",
       },
     });  
-    const page = await context.newPage();
+    page = await context.newPage();
     fixture.page = page;
     fixture.logger=createLogger(options(scenarioName))
 
   });
  
 After(async function({pickle, result}){
-    let videopath: string;
+  const video = fixture.page.video();
+  let videopath: string;
     let img: Buffer;
-    
-    const path = `./test-results/trace/${pickle.id}.zip`;
-    if (result?.status == Status.FAILED) {
-        img = await fixture.page.screenshot(
-            { path: `./test-results/screenshots/${pickle.name}.png`, type: "png" });       
-                
-    }
-    await fixture.page.close();
-    await context.close();
-  
+    videopath = '';
+    console.log(result?.duration);
+    console.log(result?.status);
+    if(result?.status==Status.FAILED){
+      img =await fixture.page.screenshot({path:`./test-results/screenshots/${pickle.name}.png`});
+       this.attach(
+         img, "image/png"
+       );
+       if(video)  videopath = await video.path();        
+     }
 
+     await fixture.page.close();
+     await context.close();
+     if(result?.status==Status.FAILED){
+      
+    this.attach(
+         fs.readFileSync(videopath),
+         'video/webm'
+       ); 
+      } 
 });
 
 AfterAll(async function() {
