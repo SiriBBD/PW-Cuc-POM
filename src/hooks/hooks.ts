@@ -19,6 +19,7 @@ BeforeAll(async function () {
 Before(async function({pickle}){    
     const scenarioName=pickle.name + pickle.id;
     context=await browser.newContext({
+      viewport: { width: 1920, height: 1080 }, 
       recordVideo:{
         dir:"test-results/videos",
       },
