@@ -10,9 +10,8 @@ loginPage = new LoginPage(fixture.page);
 
          Given('User navigates to the application', async function () { 
             await fixture.page.goto(process.env.BASEURL as string);
-         // await loginPage.navigateToUrl();  
-          await fixture.page.waitForTimeout(3000);  
-          fixture.logger.info("Navigated to the application")        
+            await fixture.page.waitForTimeout(3000);  
+            fixture.logger.info("Navigated to the application")        
          });
 
               

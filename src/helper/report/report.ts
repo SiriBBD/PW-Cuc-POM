@@ -4,17 +4,15 @@ report.generate({
     jsonDir: "test-results",
     reportPath: "test-results/reports/",
     reportName: "Playwright Automation Report",
-    pageTitle: "Fusion Software test report",
-    displayDuration: false,
+    pageTitle: "Fusion Software Test report",
+    displayDuration: true,
     metadata: {
         browser: {
-            name: "chrome",
-            version: "112",
+            name: process.env.npm_config_browser ||"chrome"
         },
-        device: "",
+        device: process.env.COMPUTERNAME,
         platform: {
-            name: "Windows",
-            version: "10",
+            name: process.env.OS,
         },
     },
     customData: {

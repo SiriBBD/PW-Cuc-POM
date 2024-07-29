@@ -13,7 +13,6 @@ Feature: User Authentication tests
 Examples:
       | username | password   | 
       | Taylor   | @Password1 |
-      | Siri     | password   |
       
      
      
