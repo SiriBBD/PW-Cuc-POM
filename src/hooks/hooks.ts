@@ -2,7 +2,6 @@ import { Before, After, BeforeAll, AfterAll, Status } from "@cucumber/cucumber";
 import { Browser, Page, BrowserContext, Video } from "@playwright/test";
 import { fixture } from "./pageFixture";
 import { invokeBrowser } from "../helper/browsers/browserManager";
-
 import { createLogger } from "winston";
 import {options} from "../helper/util/logger";
 import * as dotenv from 'dotenv'
