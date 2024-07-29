@@ -2,9 +2,10 @@ import { Before, After, BeforeAll, AfterAll, Status } from "@cucumber/cucumber";
 import { Browser, Page, BrowserContext, Video } from "@playwright/test";
 import { fixture } from "./pageFixture";
 import { invokeBrowser } from "../helper/browsers/browserManager";
-import { getEnv } from "../helper/env/env";
+
 import { createLogger } from "winston";
 import {options} from "../helper/util/logger";
+import * as dotenv from 'dotenv'
 const fs = require("fs-extra");
 
 let page:Page;
@@ -12,7 +13,10 @@ let browser:Browser;
 let context:BrowserContext;
 
 BeforeAll(async function () {
-  getEnv();
+  dotenv.config({
+    override: true,
+    path: `src/helper/env/.env.${process.env.npm_config_env}`  
+})
   browser= await invokeBrowser();  
 })
 

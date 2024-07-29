@@ -21,8 +21,14 @@ npm run test:failed
   npm run test / npm test
 
 # To Run Command with Tags
-npm test --TAGS="@test"
-npm test --TAGS="@test" --BROWSER="firefox" 
+npm test --ENV=prod
+npm test --TAGS="@test" --ENV=prod
+npm test --TAGS="@test" --BROWSER="firefox" --ENV=prod
+
+#Note:  have to pass ENV in command line to test
+If npm test only needed and default should be ENV=prod then add in package.jason test line as cross-env ENV=prod
+
+
 
 
   

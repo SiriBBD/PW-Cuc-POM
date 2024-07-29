@@ -17,7 +17,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "npx ts-node src/helper/report/init.ts",
-    "test": "cross-env ENV=prod cucumber-js --config=config/cucumber.js || exit 0",
+    "test": "cucumber-js --config=config/cucumber.js || exit 0",
     "posttest": "npx ts-node src/helper/report/report.ts",
     "test:failed": "cucumber-js @rerun.txt"
   },
